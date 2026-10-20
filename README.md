@@ -1,60 +1,36 @@
-# Business Venture Group Inc.
+# Business Venture Group
 
-Official website for **Business Venture Group Inc.** — a premier light industrial construction company delivering turnkey general contracting, design-build, soft-crafts, process mechanical, and custom steel fabrication solutions.
+A complete responsive website for industrial construction and services, built with Next.js and TypeScript. All photography and fonts are served locally.
 
-Based on the multi-entity corporate model of industrial leaders like [Bartlett Group](https://bartlettgrp.com/).
+## Run locally
 
----
-
-## 🌐 Routes & Pages
-
-- **`/`**: Homepage featuring hero parallax, services showcase, subsidiary divisions, featured project portfolio, and client trust metrics.
-- **`/leadership`**: Executive Management directory (Chairman, CEO, Division Presidents, CFO).
-- **`/leadership/operations-management`**: Operations VPs, Turnaround Specialists, and Logistics Directors.
-- **`/leadership/construction-managers`**: Field Construction Managers and Trade Superintendents.
-- **`/companies`**: Family of Operating Companies:
-  - *BVG Industrial Services* (Soft-Crafts & Turnaround Maintenance)
-  - *BVG Mechanical Solutions* (ASME Code Piping & Critical Units)
-  - *BVG Fabrication & Manufacturing* (180k sq. ft. Custom Steel & Skids)
-  - *BVG Infrastructure & Civil* (Mass Earthwork & Deep Foundations)
-  - *BVG Refractory & High-Heat* (Thermal Linings & Industrial Furnaces)
-  - *BVG NextGen Modular Systems* (Engineered Quick-Pin Scaffolding)
-- **`/news`**: Press releases, project milestones, ESG reports, and interactive article reader.
-- **`/careers`**: Recruitment portal with total benefits, 4-step hiring journey, department filter, and Fast-Track Mobile Application modal.
-- **`/contact`**: Interactive RFP & estimate brief submission form, 24/7 Outage Emergency hotline, Regional Depots (Houston, Atlanta, Charlotte), and owner FAQ accordion.
-
----
-
-## 🛠 Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org) (App Router, Turbopack)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev)
-- **Images**: High-resolution curated industrial photography with Next.js Image optimization
-
----
-
-## 🚀 Getting Started
-
-First, install dependencies:
-
-```bash
-npm install
-```
-
-Run the development server:
-
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to view the application.
+## Production
 
-### Production Build
-
-```bash
+```sh
+npm run lint
 npm run build
-npm run start
+npm start
 ```
+
+## Pages
+
+Home, capabilities, industries, the group, our approach, operations management, construction management, careers, field notes (three full articles), contact, privacy, and a custom 404. Existing leadership, companies, news, careers, and contact routes are retained.
+
+## Inquiry handling
+
+The previous forms simulated successful delivery. The rebuilt form validates details, offers an editable review, and can copy or download a brief. It does not store personal information or claim to submit it. To enable a prefilled email handoff, copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_CONTACT_EMAIL` to the verified company mailbox, then rebuild. Set `NEXT_PUBLIC_SITE_URL` to the public website origin when deploying to generate correct social sharing URLs. The user sends through their own email app.
+
+## Content integrity
+
+Removed unverified executives and stock portraits, financial and safety statistics, project awards, office addresses, phone numbers, certification claims, fictional subsidiaries, salary/benefit promises, and invented vacancies. Field notes are original general planning articles, not company project announcements. Service descriptions are based on the source website's scope; they should be confirmed by the business before publication.
+
+## Assets
+
+Fonts: Barlow Condensed and Manrope, distributed under the SIL Open Font License (see public/fonts). Photography: locally cached Unsplash images, used as illustrative industrial photography rather than images of claimed BVG projects. Image source records are in public/images/SOURCES.txt.
+
+The site is prepared for local review. Publishing and connecting an inquiry delivery service require the relevant hosting and company account details.

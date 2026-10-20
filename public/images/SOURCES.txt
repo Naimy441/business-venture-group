@@ -1,0 +1,11 @@
+Illustrative photography from Unsplash. These images do not depict claimed BVG projects or personnel.
+
+construction.jpg: https://images.unsplash.com/photo-1541888946425-d81bb19240f5
+craft.jpg: https://images.unsplash.com/photo-1504307651254-35680f356dfd
+welding.jpg: https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122
+plant.jpg: https://images.unsplash.com/photo-1513828583688-c52646db42da
+warehouse.jpg: https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d
+plans.jpg: https://images.unsplash.com/photo-1503387762-592deb58ef4e
+refinery.jpg: https://images.unsplash.com/photo-1660448076231-6da14185d036
+
+License: https://unsplash.com/license

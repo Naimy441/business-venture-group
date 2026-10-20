@@ -1,235 +1,126 @@
-'use client';
-
-import PageHero from '@/components/PageHero';
-import { FadeIn, StaggerContainer, StaggerItem } from '@/components/Animations';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, Award, Users, Shield, Briefcase, Mail } from 'lucide-react';
-import { IMAGES } from '@/lib/images';
-
-const executives = [
-  {
-    name: 'James Mitchell',
-    title: 'Chairman of the Board',
-    image: IMAGES.executives.jamesMitchell,
-    tenure: '25+ Years Experience',
-    division: 'Corporate Governance',
-    description:
-      'With over 25 years of experience in industrial construction, James provides strategic oversight and governance, guiding Business Venture Group through decades of sustained growth, national acquisitions, and market leadership.',
-  },
-  {
-    name: 'Robert Chen',
-    title: 'CEO & President',
-    image: IMAGES.executives.robertChen,
-    tenure: '20+ Years Experience',
-    division: 'Executive Management',
-    description:
-      'Robert brings 20+ years of strategic growth leadership to the organization. His vision and operational acumen have expanded BVG into new industrial corridors while maintaining our unwavering standard for Target Zero safety.',
-  },
-  {
-    name: 'Sarah Williams',
-    title: 'President, Industrial Services',
-    image: IMAGES.executives.sarahWilliams,
-    tenure: '18+ Years Experience',
-    division: 'BVG Industrial Services',
-    description:
-      'An 18-year veteran of industrial operations, Sarah oversees all soft-craft and facility turnaround divisions. Her expertise in process optimization and client relations has secured multi-year national accounts.',
-  },
-  {
-    name: 'David Rodriguez',
-    title: 'President, Mechanical Division',
-    image: IMAGES.executives.davidRodriguez,
-    tenure: '15+ Years Experience',
-    division: 'BVG Mechanical Solutions',
-    description:
-      'David leads the mechanical engineering division with 15+ years of hands-on experience. His technical proficiency across ASME code vessels, process piping, and rotating machinery drives critical-path excellence.',
-  },
-  {
-    name: 'Michael Thompson',
-    title: 'President, HSE & HR',
-    image: IMAGES.executives.michaelThompson,
-    tenure: '20+ Years Experience',
-    division: 'Health, Safety & People',
-    description:
-      'With 20+ years dedicated to health, safety, environment, and workforce development, Michael champions our industry-leading 0.54 EMR rating and the continuous development of our 1,200+ craft personnel.',
-  },
-  {
-    name: 'Jennifer Park',
-    title: 'Chief Financial Officer',
-    image: IMAGES.executives.jenniferPark,
-    tenure: '14+ Years Experience',
-    division: 'Finance & Capital Strategy',
-    description:
-      'Jennifer oversees fiscal governance, bonding lines surpassing $350M, capital equipment deployment, and strategic acquisitions, ensuring long-term balance sheet strength across all operating entities.',
-  },
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import { ProjectCTA } from "@/components/Footer";
+export const metadata = {
+  title: "Our Approach",
+  description:
+    "Clear planning, coordinated execution, and attention to safety and quality throughout the project.",
+};
+const steps = [
+  [
+    "Understand the job.",
+    "Start with the facility, the intended outcome, and the constraints. Ask the questions that affect access, sequence, cost, and handover.",
+  ],
+  [
+    "Build a workable plan.",
+    "Define the scope, identify the trade interfaces, and establish how decisions will be made. Tie procurement and field activities to a practical sequence.",
+  ],
+  [
+    "Stay close to the work.",
+    "Keep communication direct. Review progress against the plan, raise changes early, and make the next steps clear to everyone involved.",
+  ],
+  [
+    "Finish with care.",
+    "Coordinate inspections, resolve outstanding items, and organize the records needed for handover. Treat closeout as part of execution.",
+  ],
 ];
-
-const subPages = [
-  {
-    title: 'Operations Management',
-    description:
-      'Meet the operations vice presidents and turnaround managers who ensure every project is executed with precision.',
-    href: '/leadership/operations-management',
-    image: IMAGES.heroes.operations,
-    icon: Users,
-  },
-  {
-    title: 'Construction Managers',
-    description:
-      'Our field construction managers lead on-site crews, superintendents, and subcontractors across active jobsites nationwide.',
-    href: '/leadership/construction-managers',
-    image: IMAGES.heroes.constructionManagers,
-    icon: Shield,
-  },
-];
-
-export default function LeadershipPage() {
+export default function Approach() {
   return (
     <>
       <PageHero
-        title="Our Leadership"
-        subtitle="Experienced executives driving innovation, safety, and operational excellence across every light industrial build."
-        breadcrumbs={[{ label: 'Leadership', href: '/leadership' }]}
-        backgroundImage={IMAGES.heroes.leadership}
+        eyebrow="Our approach"
+        title="Accountability belongs in the field."
+        description="A good plan matters. So does what happens when the work begins. Our approach connects both through direct communication and clear responsibility."
+        image="construction"
       />
-
-      {/* Intro Section */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
-                <Award className="w-4 h-4 text-gold" />
-                Executive Leadership
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-6">
-                Guided by <span className="text-gold">Industry Pioneers</span>
+      <section className="section">
+        <div className="wrap">
+          <div className="editorial-intro">
+            <span className="eyebrow orange">How we work</span>
+            <div>
+              <h2>
+                Clear from the start.
+                <br />
+                Present through the finish.
               </h2>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-muted text-base sm:text-lg leading-relaxed">
-                Our executive leadership team brings over a century of collective leadership in light
-                industrial construction, refinery turnarounds, complex fabrication, and corporate
-                governance. Under their direction, Business Venture Group Inc. continues to set benchmarks
-                for safety, client retention, and capital delivery.
+              <p className="lead">
+                The client should know who owns the next decision, what happens
+                next, and where the project stands.
               </p>
-            </FadeIn>
+              <p>
+                That means keeping construction planning, field coordination,
+                and closeout connected. It also means speaking plainly when
+                conditions change and working through the impact before moving
+                ahead.
+              </p>
+            </div>
           </div>
-
-          {/* Executive Grid with Real Photography */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {executives.map((exec) => (
-              <StaggerItem key={exec.name}>
-                <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col justify-between h-full group">
-                  <div>
-                    {/* Real Portrait Photography */}
-                    <div className="relative h-72 sm:h-80 overflow-hidden bg-navy">
-                      <Image
-                        src={exec.image}
-                        alt={exec.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy/20 to-transparent" />
-                      <span className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-navy/90 backdrop-blur-md text-gold-light text-xs font-bold uppercase tracking-wider">
-                        {exec.division}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <div className="text-xs font-bold text-muted uppercase tracking-wider mb-1">
-                        {exec.tenure}
-                      </div>
-                      <h3 className="text-2xl font-bold text-navy group-hover:text-gold transition-colors mb-1">
-                        {exec.name}
-                      </h3>
-                      <p className="text-gold font-semibold text-sm mb-4">{exec.title}</p>
-                      <p className="text-muted text-sm leading-relaxed">{exec.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-xs text-muted font-medium">Business Venture Group Inc.</span>
-                    <Link
-                      href="/contact"
-                      className="text-xs font-bold text-navy group-hover:text-gold uppercase tracking-wider flex items-center gap-1 transition-colors"
-                    >
-                      Connect <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </StaggerItem>
+          <div className="process-grid">
+            {steps.map(([title, text], i) => (
+              <div key={title}>
+                <span className="process-number">0{i + 1}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
-
-      {/* Explore Operational Teams */}
-      <section className="section-padding bg-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-3">
-                <div className="w-8 h-px bg-gold" />
-                Extended Leadership
-                <div className="w-8 h-px bg-gold" />
+      <section className="section standards-section" id="our-standards">
+        <div className="wrap">
+          <span className="eyebrow orange">Our commitments</span>
+          <div className="section-top">
+            <h2>
+              The standard is
+              <br />
+              in the everyday.
+            </h2>
+            <p>
+              These are working principles. They belong in planning meetings, on
+              site, and in the details that make a project ready for use.
+            </p>
+          </div>
+          <div className="principle-list">
+            {[
+              [
+                "People first",
+                "Plan access, identify hazards, and coordinate the work before it starts. Give people a clear way to raise a concern.",
+              ],
+              [
+                "Quality in the process",
+                "Agree inspection requirements and acceptance criteria early. Check the work as it progresses, not only at the end.",
+              ],
+              [
+                "Straight answers",
+                "Make scope, assumptions, and changes visible. Give clients useful information and a clear next step.",
+              ],
+            ].map(([t, p]) => (
+              <div key={t}>
+                <h3>{t}</h3>
+                <p>{p}</p>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
-                Operations & Field Management
-              </h2>
-              <p className="text-muted text-base sm:text-lg">
-                Discover the specialized directors and construction superintendents executing our daily builds.
-              </p>
-            </FadeIn>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {subPages.map((sub) => {
-              const Icon = sub.icon;
-              return (
-                <FadeIn key={sub.title}>
-                  <Link href={sub.href} className="group block h-full">
-                    <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover h-full flex flex-col justify-between">
-                      <div className="relative h-56 overflow-hidden">
-                        <Image
-                          src={sub.image}
-                          alt={sub.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy/40 to-transparent" />
-                        <div className="absolute bottom-4 left-6 flex items-center gap-3 text-white">
-                          <div className="w-10 h-10 rounded-xl bg-gold text-navy flex items-center justify-center font-bold">
-                            <Icon className="w-5 h-5 text-navy" />
-                          </div>
-                          <h3 className="text-2xl font-bold text-white group-hover:text-gold-light transition-colors">
-                            {sub.title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
-                        <p className="text-muted text-base leading-relaxed mb-6">
-                          {sub.description}
-                        </p>
-                        <div className="inline-flex items-center gap-2 text-navy group-hover:text-gold font-bold text-sm uppercase tracking-wider transition-colors pt-4 border-t border-gray-100">
-                          Meet the Team
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </FadeIn>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
+      <section className="section">
+        <div className="wrap management-grid">
+          <Link href="/leadership/operations-management">
+            <span className="eyebrow orange">Planning & coordination</span>
+            <h3>Operations management</h3>
+            <p>How the project plan becomes a coordinated effort.</p>
+            <ArrowUpRight />
+          </Link>
+          <Link href="/leadership/construction-managers">
+            <span className="eyebrow orange">Execution & closeout</span>
+            <h3>Construction management</h3>
+            <p>Keeping people, trades, and decisions connected in the field.</p>
+            <ArrowUpRight />
+          </Link>
+        </div>
+      </section>
+      <ProjectCTA />
     </>
   );
 }
