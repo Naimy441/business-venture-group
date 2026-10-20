@@ -456,13 +456,6 @@ em {
   gap: 50px;
   margin-top: 36px;
 }
-.section-cross {
-  font-family: var(--font-display);
-  font-size: 60px;
-  font-weight: 600;
-  line-height: 1;
-  color: #b7b9ad;
-}
 .intro-body > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2106,10 +2099,7 @@ em {
   .intro-body {
     margin-top: 30px;
   }
-  .section-cross {
-    display: none;
-  }
-  .intro-body .lead {
+    .intro-body .lead {
     font-size: 17px;
     margin-bottom: 20px;
   }
@@ -2832,4 +2822,18 @@ em {
   .brand .brand-mark { width: 58px; }
   .brand > span { font-size: 5.5px; }
   .brand > span > span { font-size: 14px; }
+}
+
+/* Give the introduction two purposeful columns, without an empty decorative rail. */
+.intro-copy { display: grid; grid-template-columns: 1.12fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+.intro-copy > .intro-heading { display: block; }
+.intro-copy .intro-heading > .eyebrow { padding-top: 0; margin-bottom: 28px; }
+.intro-copy .intro-heading h2 { font-size: clamp(46px,4.6vw,66px); }
+.intro-copy > .intro-body { display: block; margin-top: 43px; }
+.intro-copy .intro-body > div { display: block; }
+.intro-copy .intro-body p:not(.lead) + p { margin-top: 20px; }
+@media(max-width:900px) {
+ .intro-copy { grid-template-columns: 1fr; gap: 30px; }
+ .intro-copy > .intro-body { margin-top: 0; max-width: 650px; }
+ .intro-copy .intro-heading h2 { font-size: clamp(45px,7vw,60px); }
 }

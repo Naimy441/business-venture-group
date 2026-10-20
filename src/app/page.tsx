@@ -61,6 +61,7 @@ export default function Home() {
       </div>
       <section id="the-group" className="section intro-section">
         <div className="wrap">
+          <div className="intro-copy">
           <div className="intro-heading">
             <span className="eyebrow orange">01 / The group</span>
             <h2>
@@ -71,9 +72,6 @@ export default function Home() {
             </h2>
           </div>
           <div className="intro-body">
-            <span className="section-cross" aria-hidden="true">
-              +
-            </span>
             <div>
               <p className="lead">
                 Industrial projects don’t happen in isolation. Neither should
@@ -93,6 +91,7 @@ export default function Home() {
                 How we work <ArrowUpRight size={18} />
               </Link>
             </div>
+          </div>
           </div>
           <div className="intro-images">
             <figure className="image-main">
