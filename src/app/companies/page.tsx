@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   Building2,
@@ -19,15 +20,15 @@ import {
 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/Animations';
+import { IMAGES } from '@/lib/images';
 
 interface Company {
   id: string;
   name: string;
   tagline: string;
   badge: string;
+  image: string;
   icon: typeof Building2;
-  gradient: string;
-  borderAccent: string;
   description: string;
   capabilities: string[];
   stats: { label: string; value: string }[];
@@ -40,9 +41,8 @@ const companiesList: Company[] = [
     name: 'BVG Industrial Services',
     tagline: 'Comprehensive soft-crafts, turnkey maintenance & turnaround execution.',
     badge: 'Flagship Division',
+    image: IMAGES.companies.industrialServices,
     icon: Factory,
-    gradient: 'from-navy via-navy-light to-steel',
-    borderAccent: 'hover:border-gold/60',
     description:
       'Providing end-to-end industrial soft-craft solutions for manufacturing facilities, refineries, logistics hubs, and power generation plants. Our integrated craft model combines insulation, coatings, specialty scaffolding, and capital maintenance into a synchronized delivery framework.',
     capabilities: [
@@ -63,9 +63,8 @@ const companiesList: Company[] = [
     name: 'BVG Mechanical Solutions',
     tagline: 'Critical-path mechanical contracting, heavy equipment rigging & piping.',
     badge: 'Critical Path',
+    image: IMAGES.companies.mechanicalSolutions,
     icon: Wrench,
-    gradient: 'from-navy-light via-steel to-slate-custom',
-    borderAccent: 'hover:border-blue-400/60',
     description:
       'Specializing in high-consequence mechanical assembly, precision process piping, rotating equipment installation, and scheduled shutdowns. We lead the critical path on manufacturing retrofits and high-capacity processing units with rigorous ASME-certified quality standards.',
     capabilities: [
@@ -86,9 +85,8 @@ const companiesList: Company[] = [
     name: 'BVG Fabrication & Manufacturing',
     tagline: 'Custom structural steel, skid systems & certified metal engineering.',
     badge: 'Design & Fab',
+    image: IMAGES.companies.fabricationManufacturing,
     icon: Hammer,
-    gradient: 'from-steel via-navy-light to-navy',
-    borderAccent: 'hover:border-emerald-400/60',
     description:
       'Operating over 180,000 square feet of modern fabrication shop space. From initial CAD/BIM modeling to final CNC plasma cutting, welding, and field assembly, our fabrication teams deliver tailor-engineered structural steel, platforms, ductwork, and modular process skids.',
     capabilities: [
@@ -109,9 +107,8 @@ const companiesList: Company[] = [
     name: 'BVG Infrastructure & Civil',
     tagline: 'Site development, reinforced industrial foundations & deep utilities.',
     badge: 'Civil & Earthwork',
+    image: IMAGES.companies.infrastructureCivil,
     icon: Building2,
-    gradient: 'from-navy via-slate-custom to-steel',
-    borderAccent: 'hover:border-purple-400/60',
     description:
       'The foundation of every resilient industrial site. Our Civil & Infrastructure division executes mass earthwork, deep foundation pilings, heavy equipment pad pours, underground utilities, and industrial paving tailored to withstand heavy axle-load logistics.',
     capabilities: [
@@ -132,9 +129,8 @@ const companiesList: Company[] = [
     name: 'BVG Refractory & High-Heat',
     tagline: 'Engineered refractory linings, ceramic fiber & thermal barriers.',
     badge: 'Specialty Craft',
+    image: IMAGES.companies.refractorySpecialty,
     icon: Flame,
-    gradient: 'from-steel via-navy to-navy-dark',
-    borderAccent: 'hover:border-amber-500/60',
     description:
       'Engineered thermal shielding solutions for high-temperature operating units. Our team installs monolithic castable, gunite, brick lining, ceramic blankets, and specialized corrosion barriers for industrial incinerators, boilers, furnaces, and thermal oxidizers.',
     capabilities: [
@@ -155,9 +151,8 @@ const companiesList: Company[] = [
     name: 'BVG NextGen Modular Systems',
     tagline: 'Patented high-velocity scaffolding, suspended systems & engineered access.',
     badge: 'Proprietary Tech',
+    image: IMAGES.companies.nextGenAccess,
     icon: Layers,
-    gradient: 'from-navy-light via-navy to-steel',
-    borderAccent: 'hover:border-cyan-400/60',
     description:
       'Next-generation modular scaffold engineering designed to reduce erection and dismantle time by up to 40%. Equipped with digital inventory telemetry, safety interlocks, and custom cantilever designs for high-bay manufacturing and tall vertical structures.',
     capabilities: [
@@ -209,6 +204,7 @@ export default function CompaniesPage() {
         title="Our Companies"
         subtitle="A family of specialized industrial contracting entities united under one standard of excellence, safety, and delivery."
         breadcrumbs={[{ label: 'Our Companies', href: '/companies' }]}
+        backgroundImage={IMAGES.heroes.companies}
       />
 
       {/* Intro Section */}
@@ -216,20 +212,20 @@ export default function CompaniesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                 <div className="w-8 h-px bg-gold" />
                 The Business Venture Group Ecosystem
                 <div className="w-8 h-px bg-gold" />
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-3xl md:text-5xl font-bold text-navy mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-6">
                 Specialized Craftsmanship.{' '}
                 <span className="text-gradient">Enterprise Power.</span>
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-muted text-lg leading-relaxed">
+              <p className="text-muted text-base sm:text-lg leading-relaxed">
                 Rather than treating industrial construction as a one-size-fits-all discipline,
                 Business Venture Group Inc. operates through dedicated subsidiary business units.
                 Each company operates with deep domain specialization while drawing on the financial
@@ -238,51 +234,54 @@ export default function CompaniesPage() {
             </FadeIn>
           </div>
 
-          {/* Companies Grid */}
+          {/* Companies Grid with Real Photography */}
           <div className="space-y-12">
-            {companiesList.map((company, index) => {
+            {companiesList.map((company) => {
               const IconComponent = company.icon;
-              const isEven = index % 2 === 0;
 
               return (
                 <FadeIn key={company.id} delay={0.1} direction="up">
                   <div
                     id={company.id}
-                    className="group relative bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm
+                    className="group relative bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-sm
                                hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
                   >
                     <div className="grid grid-cols-1 lg:grid-cols-12">
-                      {/* Left Header / Brand Accent Block */}
-                      <div
-                        className={`lg:col-span-5 bg-gradient-to-br ${company.gradient} p-8 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden`}
-                      >
-                        {/* Decorative background circle */}
-                        <div className="absolute -right-12 -top-12 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
-                        <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-gold/10 rounded-full blur-2xl" />
+                      {/* Left Visual Photography Side */}
+                      <div className="lg:col-span-5 relative min-h-[340px] sm:min-h-[400px] flex flex-col justify-between p-8 sm:p-10 text-white overflow-hidden bg-navy">
+                        <Image
+                          src={company.image}
+                          alt={company.name}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 42vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        {/* Dramatic dark gradients over photo */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy/70 to-navy-dark/60" />
 
                         <div className="relative z-10">
-                          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-semibold text-gold-light uppercase tracking-wider mb-6">
+                          <div className="inline-flex items-center gap-2 bg-navy-dark/80 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-gold-light uppercase tracking-wider mb-6 border border-white/10">
                             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                             {company.badge}
                           </div>
 
-                          <div className="w-16 h-16 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <IconComponent className="w-8 h-8 text-gold-light" />
+                          <div className="w-14 h-14 rounded-2xl bg-gold/90 backdrop-blur-md flex items-center justify-center mb-4 text-navy shadow-lg font-bold">
+                            <IconComponent className="w-7 h-7 text-navy" />
                           </div>
 
-                          <h3 className="text-2xl sm:text-3xl font-bold mb-3 tracking-tight">
+                          <h3 className="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight text-white group-hover:text-gold-light transition-colors">
                             {company.name}
                           </h3>
-                          <p className="text-white/80 text-base leading-relaxed mb-6 font-light">
+                          <p className="text-white/85 text-sm sm:text-base leading-relaxed mb-6 font-light">
                             {company.tagline}
                           </p>
                         </div>
 
-                        {/* Quick Stats in Header */}
-                        <div className="relative z-10 pt-6 border-t border-white/15 grid grid-cols-2 gap-4">
+                        {/* Quick Stats in Image Block */}
+                        <div className="relative z-10 pt-4 border-t border-white/20 grid grid-cols-2 gap-4 bg-navy-dark/40 backdrop-blur-sm p-3 rounded-xl">
                           {company.stats.map((stat) => (
                             <div key={stat.label}>
-                              <div className="text-2xl sm:text-3xl font-extrabold text-gold-light">
+                              <div className="text-2xl font-black text-gold-light">
                                 {stat.value}
                               </div>
                               <div className="text-xs text-white/70 uppercase tracking-wider mt-0.5">
@@ -296,14 +295,14 @@ export default function CompaniesPage() {
                       {/* Right Details Block */}
                       <div className="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-between bg-white">
                         <div>
-                          <h4 className="text-sm font-bold uppercase tracking-wider text-navy/60 mb-3">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-muted mb-2">
                             Executive Overview
                           </h4>
-                          <p className="text-muted text-base leading-relaxed mb-6">
+                          <p className="text-dark/80 text-base leading-relaxed mb-6">
                             {company.description}
                           </p>
 
-                          <h4 className="text-sm font-bold uppercase tracking-wider text-navy/60 mb-3">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-muted mb-3">
                             Core Capabilities & Services
                           </h4>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
@@ -317,7 +316,7 @@ export default function CompaniesPage() {
                             ))}
                           </div>
 
-                          <h4 className="text-sm font-bold uppercase tracking-wider text-navy/60 mb-2">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-muted mb-2">
                             Key Industries Served
                           </h4>
                           <div className="flex flex-wrap gap-2 mb-6">
@@ -359,19 +358,19 @@ export default function CompaniesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                 <div className="w-8 h-px bg-gold" />
                 Integrated Delivery Advantage
                 <div className="w-8 h-px bg-gold" />
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
                 Why Owners Choose Our Umbrella Model
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-muted text-lg">
+              <p className="text-muted text-base sm:text-lg">
                 Coordinating multiple specialty contractors often leads to schedule slippages, disputed handoffs,
                 and administrative drag. Business Venture Group solves this at the structural level.
               </p>
@@ -383,11 +382,11 @@ export default function CompaniesPage() {
               const Icon = pillar.icon;
               return (
                 <StaggerItem key={pillar.title}>
-                  <div className="bg-white rounded-xl p-8 h-full border border-gray-100 card-hover shadow-sm">
-                    <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-6">
+                  <div className="bg-white rounded-2xl p-8 h-full border border-gray-200 card-hover shadow-sm">
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-6">
                       <Icon className="w-6 h-6 text-gold" />
                     </div>
-                    <h3 className="text-lg font-bold text-navy mb-3">{pillar.title}</h3>
+                    <h3 className="text-lg font-bold text-navy mb-2">{pillar.title}</h3>
                     <p className="text-muted text-sm leading-relaxed">{pillar.description}</p>
                   </div>
                 </StaggerItem>
@@ -397,31 +396,41 @@ export default function CompaniesPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="relative py-20 bg-navy text-white overflow-hidden">
-        <div className="absolute inset-0 hero-gradient opacity-90" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Bottom CTA with Industrial Background */}
+      <section className="relative py-24 bg-navy text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={IMAGES.heroes.companies}
+            alt="Industrial construction facility"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy/90 to-navy-dark/95" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-5xl font-extrabold mb-6 leading-tight">
               Need Multi-Craft Support on Your Next Build?
             </h2>
-            <p className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-10">
+            <p className="text-white/80 text-lg sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-light">
               Engage our individual companies or deploy our combined turnkey force for your complex capital
-              project or shutdown.
+              project or facility outage.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light
-                           text-navy font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:shadow-gold/25"
+                           text-navy font-extrabold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-gold/25"
               >
                 Request Capabilities Presentation
                 <ArrowUpRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/careers"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/20
-                           hover:border-white/50 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:bg-white/5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-white/30
+                           hover:border-white text-white font-semibold px-8 py-4 rounded-xl transition-all hover:bg-white/10 backdrop-blur-sm"
               >
                 Join One of Our Companies
               </Link>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Briefcase,
@@ -23,6 +24,7 @@ import {
 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/Animations';
+import { IMAGES } from '@/lib/images';
 
 interface JobPosition {
   id: string;
@@ -139,7 +141,7 @@ const benefits = [
   {
     icon: DollarSign,
     title: 'Top-Tier Compensation',
-    description: 'Weekly pay, competitive craft wages, lucrative overtime, per diems, and annual merit performance bonuses.',
+    description: 'Weekly direct deposit, competitive craft wages, lucrative overtime, per diems, and annual merit performance bonuses.',
   },
   {
     icon: Heart,
@@ -240,44 +242,45 @@ export default function CareersPage() {
         title="Careers at BVG"
         subtitle="We recruit the elite in the industry. Join an organization where your safety, craft mastery, and career growth come first."
         breadcrumbs={[{ label: 'Careers', href: '/careers' }]}
+        backgroundImage={IMAGES.heroes.careers}
       />
 
-      {/* Intro Hook Section */}
+      {/* Intro Hook Section with Real Photography */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
               <FadeIn>
-                <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+                <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                   <div className="w-8 h-px bg-gold" />
                   Elite Industrial Craftsmanship
                 </div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-6 leading-tight">
                   Where Real Builders <span className="text-gold">Build Real Futures</span>
                 </h2>
-                <p className="text-muted text-lg leading-relaxed mb-6">
+                <p className="text-muted text-base sm:text-lg leading-relaxed mb-6">
                   At Business Venture Group Inc., we know that our reputation is built on the
                   hard work, discipline, and pride of the men and women on our jobsites. That&apos;s
-                  why we don&apos;t treat employees like headcount—we treat our team as long-term partners.
+                  why we don&apos;t treat employees like headcount—we treat our craft personnel as long-term partners.
                 </p>
                 <p className="text-muted text-base leading-relaxed mb-8">
-                  Whether you are a seasoned construction executive, a master pipefitter, or an ambitious
-                  apprentice looking to earn while you learn, BVG provides the steady project pipeline,
-                  modern equipment, and safety infrastructure you need to thrive.
+                  Whether you are a seasoned construction manager, an ASME-certified pipefitter, or an ambitious
+                  apprentice looking to earn while you learn, BVG provides the steady multi-year project pipeline,
+                  modern equipment, and safety infrastructure you need to excel.
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
                   <div>
                     <div className="text-3xl font-extrabold text-navy">1,200+</div>
-                    <div className="text-xs text-muted uppercase mt-1">Full-Time Personnel</div>
+                    <div className="text-xs text-muted font-bold uppercase mt-1">Full-Time Personnel</div>
                   </div>
                   <div>
                     <div className="text-3xl font-extrabold text-gold">94%</div>
-                    <div className="text-xs text-muted uppercase mt-1">Annual Retention</div>
+                    <div className="text-xs text-muted font-bold uppercase mt-1">Annual Retention</div>
                   </div>
                   <div>
                     <div className="text-3xl font-extrabold text-navy">0.54</div>
-                    <div className="text-xs text-muted uppercase mt-1">Industry EMR Rating</div>
+                    <div className="text-xs text-muted font-bold uppercase mt-1">Industry EMR Rating</div>
                   </div>
                 </div>
               </FadeIn>
@@ -285,20 +288,34 @@ export default function CareersPage() {
 
             <div className="lg:col-span-5">
               <FadeIn delay={0.2} direction="left">
-                <div className="bg-gradient-to-br from-navy via-navy-light to-steel rounded-3xl p-8 sm:p-10 text-white relative overflow-hidden shadow-2xl">
-                  <div className="absolute right-0 bottom-0 w-64 h-64 bg-gold/15 rounded-full blur-3xl" />
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-navy min-h-[420px] p-8 sm:p-10 flex flex-col justify-between text-white border border-gray-200">
+                  <Image
+                    src={IMAGES.about.fieldCrew}
+                    alt="BVG industrial field crew"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy/80 to-navy-dark/60" />
+
                   <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center mb-6">
-                      <HardHat className="w-6 h-6 text-gold-light" />
+                    <div className="w-12 h-12 rounded-xl bg-gold/90 text-navy flex items-center justify-center mb-6 font-bold">
+                      <HardHat className="w-6 h-6 text-navy" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-4">Fast-Track Mobile Application</h3>
-                    <p className="text-white/80 text-sm leading-relaxed mb-6">
-                      Skip the 10-page forms. Apply directly from your phone in under two minutes.
-                      Our recruiting desk reviews applications within 24 business hours.
+                    <span className="text-xs font-bold text-gold-light uppercase tracking-widest block mb-2">
+                      Bartlett-Style Recruiting
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold mb-3">Fast-Track Mobile Application</h3>
+                    <p className="text-white/80 text-sm leading-relaxed mb-6 font-light">
+                      Skip the 10-page browser forms. Apply directly from your mobile device in under two minutes.
+                      Our recruiting desk contacts qualified applicants within 24 business hours.
                     </p>
+                  </div>
+
+                  <div className="relative z-10">
                     <a
                       href="#open-positions"
-                      className="inline-flex items-center justify-center w-full gap-2 bg-gold hover:bg-gold-light text-navy font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-gold/20 text-sm"
+                      className="inline-flex items-center justify-center w-full gap-2 bg-gold hover:bg-gold-light text-navy font-extrabold py-3.5 rounded-xl transition-all shadow-lg shadow-gold/25 text-sm"
                     >
                       Browse Open Positions
                       <ArrowUpRight className="w-4 h-4" />
@@ -316,15 +333,15 @@ export default function CareersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                 <div className="w-8 h-px bg-gold" />
                 Total Rewards
                 <div className="w-8 h-px bg-gold" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-4">
                 Benefits Built for You & Your Family
               </h2>
-              <p className="text-muted text-lg">
+              <p className="text-muted text-base sm:text-lg">
                 We believe in taking care of those who build America. Our benefits package is recognized
                 as one of the most generous in the industrial contracting sector.
               </p>
@@ -336,7 +353,7 @@ export default function CareersPage() {
               const Icon = b.icon;
               return (
                 <StaggerItem key={b.title}>
-                  <div className="bg-white rounded-2xl p-8 h-full border border-gray-100 card-hover shadow-sm">
+                  <div className="bg-white rounded-2xl p-8 h-full border border-gray-200 card-hover shadow-sm">
                     <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-6">
                       <Icon className="w-6 h-6 text-gold" />
                     </div>
@@ -350,20 +367,68 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Hiring Journey */}
+      {/* Craft Academy Spotlight with Real Photo */}
       <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-navy rounded-3xl overflow-hidden p-8 sm:p-14 text-white relative shadow-2xl">
+            <div className="absolute right-0 top-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="lg:col-span-6 relative z-10">
+              <span className="text-xs font-bold text-gold uppercase tracking-widest mb-3 block">
+                Workforce Development
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">
+                BVG Industrial Trades Academy
+              </h2>
+              <p className="text-white/80 text-base leading-relaxed mb-6 font-light">
+                Our accredited craft apprenticeship program provides 100% paid tuition, classroom
+                rigging and welding labs, NCCER certifications, and full hourly wages from day one.
+              </p>
+              <div className="space-y-3 mb-8">
+                {['Full Hourly Wages During Training', 'ASME & NCCER Nationally Recognized Badging', 'Dedicated 1-on-1 Senior Superintendent Mentorship'].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5 text-sm text-white/90">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#open-positions"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-navy font-extrabold px-6 py-3.5 rounded-xl text-sm transition-all"
+              >
+                Apply for Apprenticeship Track
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            <div className="lg:col-span-6 relative h-[320px] sm:h-[400px] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src={IMAGES.about.qualityCheck}
+                alt="Apprentice and engineer inspecting precision equipment"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hiring Journey */}
+      <section className="section-padding bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                 <div className="w-8 h-px bg-gold" />
                 How We Hire
                 <div className="w-8 h-px bg-gold" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-                Simple, Respectful & Rapid Hiring Process
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-4">
+                Simple, Respectful & Rapid Process
               </h2>
-              <p className="text-muted text-lg">
+              <p className="text-muted text-base sm:text-lg">
                 We know your time is valuable. Our four-step onboarding gets you on the job and earning without red tape.
               </p>
             </FadeIn>
@@ -372,9 +437,9 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {hiringSteps.map((step, idx) => (
               <FadeIn key={step.step} delay={idx * 0.1}>
-                <div className="bg-light rounded-2xl p-8 relative border border-gray-200 h-full flex flex-col justify-between">
+                <div className="bg-white rounded-2xl p-8 relative border border-gray-200 h-full flex flex-col justify-between shadow-sm card-hover">
                   <div>
-                    <span className="text-4xl font-black text-gold/30 mb-4 block">
+                    <span className="text-4xl font-black text-gold mb-3 block">
                       {step.step}
                     </span>
                     <h3 className="text-lg font-bold text-navy mb-2">{step.title}</h3>
@@ -388,16 +453,16 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions Section */}
-      <section id="open-positions" className="section-padding bg-light">
+      <section id="open-positions" className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-3">
                 <div className="w-8 h-px bg-gold" />
                 Immediate Openings
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy">
-                Explore Available Roles
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+                Explore Available Industrial Roles
               </h2>
             </div>
 
@@ -407,10 +472,10 @@ export default function CareersPage() {
                 <button
                   key={dept}
                   onClick={() => setSelectedDept(dept)}
-                  className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
                     selectedDept === dept
                       ? 'bg-navy text-white shadow-md'
-                      : 'bg-white text-muted hover:text-navy border border-gray-200'
+                      : 'bg-light text-muted hover:text-navy border border-gray-200'
                   }`}
                 >
                   {dept}
@@ -481,7 +546,7 @@ export default function CareersPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
             onClick={() => !formSubmitted && setApplyingJob(null)}
           >
             <motion.div

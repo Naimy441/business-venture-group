@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone,
@@ -18,10 +19,12 @@ import {
 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/Animations';
+import { IMAGES } from '@/lib/images';
 
 interface OfficeLocation {
   city: string;
   region: string;
+  image: string;
   address: string;
   suite: string;
   phone: string;
@@ -33,6 +36,7 @@ const offices: OfficeLocation[] = [
   {
     city: 'Houston, TX',
     region: 'Corporate Headquarters & Gulf Coast Depot',
+    image: IMAGES.services.generalContracting,
     address: '1200 Industrial Parkway',
     suite: 'Suite 300, Houston, TX 77001',
     phone: '(800) 555-1234 / (713) 555-0199',
@@ -42,6 +46,7 @@ const offices: OfficeLocation[] = [
   {
     city: 'Atlanta, GA',
     region: 'Southeast Regional Operations',
+    image: IMAGES.heroes.companies,
     address: '4200 Logistics Boulevard',
     suite: 'Building B, Atlanta, GA 30336',
     phone: '(404) 555-0144',
@@ -51,6 +56,7 @@ const offices: OfficeLocation[] = [
   {
     city: 'Charlotte, NC',
     region: 'East Coast Operations & Battery Corridor Depot',
+    image: IMAGES.heroes.leadership,
     address: '8800 Commerce Park Drive',
     suite: 'Suite 150, Charlotte, NC 28273',
     phone: '(704) 555-0182',
@@ -103,7 +109,6 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -127,6 +132,7 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle="Connect with our national leadership, request project estimates, or mobilize our multi-craft teams for your industrial facility."
         breadcrumbs={[{ label: 'Contact', href: '/contact' }]}
+        backgroundImage={IMAGES.heroes.contact}
       />
 
       <section className="section-padding bg-white">
@@ -136,14 +142,14 @@ export default function ContactPage() {
             <div className="lg:col-span-7">
               <FadeIn>
                 <div className="mb-8">
-                  <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-3">
+                  <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-3">
                     <div className="w-8 h-px bg-gold" />
                     Direct Engagement
                   </div>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
+                  <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
                     Request an Estimate or Scoping Call
                   </h2>
-                  <p className="text-muted text-base leading-relaxed">
+                  <p className="text-muted text-base sm:text-lg leading-relaxed">
                     Fill out the form below and an executive project director will review your scope
                     and follow up within one business day.
                   </p>
@@ -316,7 +322,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-navy font-bold py-4 rounded-xl text-base transition-all duration-300 hover:shadow-lg hover:shadow-gold/25 disabled:opacity-50"
+                        className="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light text-navy font-extrabold py-4 rounded-xl text-base transition-all duration-300 hover:shadow-lg hover:shadow-gold/25 disabled:opacity-50"
                       >
                         {isSubmitting ? (
                           <span>Transmitting Project Brief...</span>
@@ -336,26 +342,34 @@ export default function ContactPage() {
             {/* Contact Details & Direct Hubs */}
             <div className="lg:col-span-5 space-y-8">
               <FadeIn delay={0.2} direction="left">
-                {/* 24/7 Outage Response Card */}
-                <div className="bg-gradient-to-br from-navy via-navy-light to-steel rounded-3xl p-8 text-white relative overflow-hidden shadow-xl mb-8">
-                  <div className="absolute right-0 bottom-0 w-48 h-48 bg-gold/15 rounded-full blur-2xl" />
+                {/* 24/7 Outage Response Card with Real Photo Backdrop */}
+                <div className="relative rounded-3xl p-8 sm:p-10 text-white overflow-hidden shadow-2xl mb-8 bg-navy border border-gray-200">
+                  <Image
+                    src={IMAGES.heroes.careers}
+                    alt="Emergency outage welding response"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy/90 to-navy-dark/75" />
+
                   <div className="relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/20 text-gold-light text-xs font-bold uppercase tracking-wider mb-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/20 text-gold-light text-xs font-bold uppercase tracking-wider mb-4 border border-gold/40">
                       <ShieldAlert className="w-4 h-4 text-gold-light" />
                       Critical Outage Hotline
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2">24/7 Turnaround Emergency Dispatch</h3>
-                    <p className="text-white/70 text-sm leading-relaxed mb-6">
-                      For unplanned unit outages, emergency refractory failures, or rapid-response industrial rigging.
+                    <h3 className="text-2xl font-bold mb-2">24/7 Turnaround Emergency Dispatch</h3>
+                    <p className="text-white/80 text-sm leading-relaxed mb-6 font-light">
+                      For unplanned unit outages, emergency refractory failures, or rapid-response industrial rigging across North America.
                     </p>
                     <a
                       href="tel:+18005559999"
-                      className="inline-flex items-center gap-2 text-2xl font-extrabold text-gold-light hover:underline"
+                      className="inline-flex items-center gap-2 text-2xl sm:text-3xl font-black text-gold-light hover:underline"
                     >
                       (800) 555-9999
                     </a>
-                    <div className="text-xs text-white/50 mt-1 uppercase tracking-wider">
-                      Priority Response Desk
+                    <div className="text-xs text-white/60 mt-1 uppercase tracking-wider">
+                      Priority Response Desk • 24/7/365
                     </div>
                   </div>
                 </div>
@@ -431,20 +445,20 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Regional Office Network */}
+      {/* Regional Office Network with Real Facility Photos */}
       <section className="section-padding bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                 <div className="w-8 h-px bg-gold" />
                 Strategic Footprint
                 <div className="w-8 h-px bg-gold" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
                 Regional Operating Hubs & Depots
               </h2>
-              <p className="text-muted text-lg">
+              <p className="text-muted text-base sm:text-lg">
                 Strategically positioned along primary industrial and logistics arteries to deploy tooling, craft crews, and project managers swiftly.
               </p>
             </FadeIn>
@@ -453,35 +467,49 @@ export default function ContactPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {offices.map((office) => (
               <StaggerItem key={office.city}>
-                <div className="bg-white rounded-2xl p-8 border border-gray-200 card-hover shadow-sm h-full flex flex-col justify-between">
+                <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 card-hover shadow-sm h-full flex flex-col justify-between">
                   <div>
-                    <span className="px-3 py-1 rounded-full bg-gold/15 text-gold-dark text-xs font-bold uppercase tracking-wider inline-block mb-4">
-                      {office.badge}
-                    </span>
-                    <h3 className="text-2xl font-bold text-navy mb-1">{office.city}</h3>
-                    <p className="text-xs text-muted mb-4 font-medium">{office.region}</p>
+                    {/* Real Facility Photo Banner */}
+                    <div className="relative h-48 overflow-hidden bg-navy">
+                      <Image
+                        src={office.image}
+                        alt={`${office.city} facility`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy/40 to-transparent" />
+                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-navy/90 backdrop-blur-md text-gold-light text-xs font-bold uppercase tracking-wider border border-white/10">
+                        {office.badge}
+                      </span>
+                      <h3 className="absolute bottom-3 left-4 text-2xl font-bold text-white">{office.city}</h3>
+                    </div>
 
-                    <div className="space-y-3 pt-4 border-t border-gray-100 text-sm">
-                      <div className="flex items-start gap-2.5">
-                        <MapPin className="w-4 h-4 text-gold mt-1 shrink-0" />
-                        <span className="text-dark/80">
-                          {office.address}<br />{office.suite}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2.5">
-                        <Phone className="w-4 h-4 text-gold shrink-0" />
-                        <span className="text-dark/80 font-medium">{office.phone}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5">
-                        <Mail className="w-4 h-4 text-gold shrink-0" />
-                        <span className="text-dark/80">{office.email}</span>
+                    <div className="p-6">
+                      <p className="text-xs text-muted mb-4 font-semibold uppercase tracking-wider">{office.region}</p>
+
+                      <div className="space-y-3 pt-2 border-t border-gray-100 text-sm">
+                        <div className="flex items-start gap-2.5">
+                          <MapPin className="w-4 h-4 text-gold mt-1 shrink-0" />
+                          <span className="text-dark/80">
+                            {office.address}<br />{office.suite}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <Phone className="w-4 h-4 text-gold shrink-0" />
+                          <span className="text-dark/80 font-medium">{office.phone}</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                          <Mail className="w-4 h-4 text-gold shrink-0" />
+                          <span className="text-dark/80">{office.email}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="pt-6 mt-6 border-t border-gray-100">
+                  <div className="px-6 pb-6 pt-2 border-t border-gray-100">
                     <span className="text-xs text-muted flex items-center gap-1 font-semibold">
-                      Full Dispatch Facility • Craft Certification Center
+                      Full Dispatch Facility • Equipment Depot
                     </span>
                   </div>
                 </div>
@@ -496,11 +524,11 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <FadeIn>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                 <HelpCircle className="w-4 h-4 text-gold" />
                 Clear Answers
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
                 Frequently Asked Owner Questions
               </h2>
               <p className="text-muted text-base">
@@ -514,7 +542,7 @@ export default function ContactPage() {
               const isOpen = activeFaq === idx;
               return (
                 <FadeIn key={idx} delay={idx * 0.05}>
-                  <div className="border border-gray-200 rounded-2xl overflow-hidden transition-colors">
+                  <div className="border border-gray-200 rounded-2xl overflow-hidden transition-colors shadow-sm">
                     <button
                       onClick={() => setActiveFaq(isOpen ? null : idx)}
                       className="w-full p-6 text-left flex items-center justify-between gap-4 bg-white hover:bg-light transition-colors"

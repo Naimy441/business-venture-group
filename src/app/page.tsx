@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import {
@@ -15,93 +16,147 @@ import {
   Wrench,
   Factory,
   Hammer,
+  Clock,
+  Sparkles,
+  PhoneCall,
 } from 'lucide-react';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/Animations';
+import { IMAGES } from '@/lib/images';
 
 const stats = [
-  { number: '500+', label: 'Projects Completed' },
+  { number: '500+', label: 'Industrial Projects Built' },
   { number: '25+', label: 'Years Experience' },
-  { number: '1,200+', label: 'Skilled Workers' },
-  { number: '98%', label: 'Client Satisfaction' },
+  { number: '1,200+', label: 'Certified Craft Specialists' },
+  { number: '0.54', label: 'Industry-Leading EMR Rating' },
 ];
 
 const services = [
   {
     icon: Building2,
     title: 'General Contracting',
+    image: IMAGES.services.generalContracting,
     description:
-      'Full-service general contracting for light industrial facilities, warehouses, and manufacturing plants.',
+      'Turnkey general contracting for light industrial manufacturing plants, automated logistics hubs, and assembly complexes.',
+    highlights: ['Lump-Sum & Guaranteed Max Price', 'Comprehensive Subcontractor Management', 'Target Zero Jobsite Safety'],
   },
   {
     icon: HardHat,
-    title: 'Design-Build',
+    title: 'Design-Build Delivery',
+    image: IMAGES.services.designBuild,
     description:
-      'Integrated design-build solutions that streamline project delivery and reduce costs.',
+      'Integrated architecture, structural engineering, and construction under a single contract to compress delivery timelines.',
+    highlights: ['Single-Point Responsibility', 'Value Engineering from Day One', '3D Laser Scanning & BIM Integration'],
   },
   {
     icon: Wrench,
-    title: 'Pre-Construction',
+    title: 'Pre-Construction & Estimating',
+    image: IMAGES.services.preConstruction,
     description:
-      'Comprehensive pre-construction services including estimating, value engineering, and scheduling.',
+      'Data-driven feasibility studies, conceptual estimating, schedule risk modeling, and long-lead material procurement.',
+    highlights: ['Accurate Cost Modeling', 'Constructability Reviews', 'Subcontractor Pre-Qualification'],
   },
   {
     icon: Factory,
-    title: 'Industrial Maintenance',
+    title: 'Industrial Plant Maintenance',
+    image: IMAGES.services.industrialMaintenance,
     description:
-      'Ongoing maintenance and turnaround services to keep your facilities running at peak performance.',
+      'Routine maintenance, soft-crafts, and critical turnaround outages that keep manufacturing assets running at peak capacity.',
+    highlights: ['24/7 Emergency Dispatch', 'Multi-Craft Soft Craft Teams', 'Asset Lifecycle Optimization'],
   },
   {
     icon: Hammer,
-    title: 'Tenant Improvements',
+    title: 'Tenant Improvements & Retrofits',
+    image: IMAGES.services.tenantImprovements,
     description:
-      'Custom build-outs and renovations tailored to your operational requirements.',
+      'Custom interior build-outs, mezzanine additions, cleanroom enclosures, and automated robotic racking infrastructure.',
+    highlights: ['High-Bay Warehouse Build-Outs', 'Cleanroom HVAC Systems', 'Heavy Equipment Pad Re-Enforcement'],
   },
   {
     icon: Shield,
-    title: 'Safety Management',
+    title: 'Industrial Safety Management',
+    image: IMAGES.services.safetyManagement,
     description:
-      'Industry-leading safety programs that protect our workers and your assets on every project.',
+      'Nationally recognized environmental health and safety governance protecting every tradesperson and client facility.',
+    highlights: ['OSHA 30 Certified Superintendents', '2.5M Consecutive LTI-Free Hours', 'Proactive Stop-Work Empowerment'],
   },
 ];
 
 const companies = [
   {
     name: 'BVG Industrial Services',
-    description: 'Full-spectrum industrial construction and maintenance services.',
-    color: 'from-blue-600 to-blue-800',
+    division: 'Industrial Soft-Crafts & Turnarounds',
+    image: IMAGES.companies.industrialServices,
+    description: 'Comprehensive scaffolding, thermal insulation, abrasive blasting, and turnaround maintenance teams.',
+    href: '/companies#industrial-services',
   },
   {
-    name: 'BVG Mechanical',
-    description: 'Specialized mechanical installations and turnaround services.',
-    color: 'from-amber-600 to-amber-800',
+    name: 'BVG Mechanical Solutions',
+    division: 'Process Piping & Critical Units',
+    image: IMAGES.companies.mechanicalSolutions,
+    description: 'ASME-certified welding, equipment rigging, turbine overhauls, and process piping systems.',
+    href: '/companies#mechanical-solutions',
   },
   {
-    name: 'BVG Fabrication',
-    description: 'Custom metal fabrication from concept to final delivery.',
-    color: 'from-emerald-600 to-emerald-800',
+    name: 'BVG Fabrication & Manufacturing',
+    division: 'Custom Structural Steel & Skids',
+    image: IMAGES.companies.fabricationManufacturing,
+    description: '180,000 sq. ft. fabrication facility delivering robotic plasma cutting and modular skid packages.',
+    href: '/companies#fabrication-manufacturing',
   },
   {
-    name: 'BVG Infrastructure',
-    description: 'Civil and infrastructure solutions for industrial facilities.',
-    color: 'from-purple-600 to-purple-800',
+    name: 'BVG Infrastructure & Civil',
+    division: 'Earthwork & Reinforced Foundations',
+    image: IMAGES.companies.infrastructureCivil,
+    description: 'Precision mass earthwork, deep foundation pilings, and heavy concrete equipment foundations.',
+    href: '/companies#infrastructure-civil',
+  },
+];
+
+const featuredProjects = [
+  {
+    title: 'Lone Star Logistics & Assembly Facility',
+    location: 'Houston, TX',
+    scope: '650,000 sq. ft. Light Industrial Distribution Hub',
+    image: IMAGES.services.generalContracting,
+    tag: 'Design-Build',
+  },
+  {
+    title: 'Gulf Coast Advanced Materials Expansion',
+    location: 'Beaumont, TX',
+    scope: 'Process Piping & Structural Mezzanines',
+    image: IMAGES.companies.mechanicalSolutions,
+    tag: 'Mechanical & Steel',
+  },
+  {
+    title: 'Southeast Battery Logistics Center',
+    location: 'Charlotte, NC',
+    scope: 'Turnkey Civil Site Prep & Slab Construction',
+    image: IMAGES.heroes.companies,
+    tag: 'Civil & Foundation',
   },
 ];
 
 const newsItems = [
   {
-    date: 'October 15, 2026',
-    title: 'BVG Awarded $50M Industrial Complex Project',
-    excerpt: 'Business Venture Group has been selected as the general contractor for a major industrial complex in the Houston metro area.',
+    date: 'October 14, 2026',
+    category: 'Project Milestone',
+    title: 'Business Venture Group Awarded $85M Industrial Logistics & Advanced Assembly Hub',
+    image: IMAGES.news[0],
+    excerpt: 'Selected as design-build general contractor for a 650,000 sq. ft. advanced facility in the Houston industrial corridor.',
   },
   {
     date: 'September 28, 2026',
-    title: 'Safety Milestone: 2 Million Hours Without Incident',
-    excerpt: 'Our team has achieved an outstanding safety record, reflecting our unwavering commitment to workplace safety.',
+    category: 'Safety Benchmark',
+    title: 'Safety Milestone: 2.5 Million Work Hours Without a Lost-Time Incident',
+    image: IMAGES.news[1],
+    excerpt: 'Our corporate Target Zero program celebrates a major milestone across all 14 active national jobsites.',
   },
   {
-    date: 'September 10, 2026',
-    title: 'Expanding Operations to the Southeast',
-    excerpt: 'BVG announces new regional offices in Atlanta and Charlotte to better serve our growing client base.',
+    date: 'September 12, 2026',
+    category: 'Expansion',
+    title: 'Strategic Expansion: BVG Opens East Coast Regional Operations Hub in Charlotte, NC',
+    image: IMAGES.news[2],
+    excerpt: 'New 45,000 sq. ft. regional office and staging depot directly supports booming Southeast battery and clean tech corridors.',
   },
 ];
 
@@ -111,60 +166,74 @@ export default function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.2]);
 
   return (
     <>
       {/* ===== HERO SECTION ===== */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background */}
-        <motion.div style={{ y: heroY }} className="absolute inset-0 hero-gradient">
-          <div className="absolute inset-0 opacity-[0.03]">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-            }} />
-          </div>
-
-          {/* Decorative geometric shapes */}
-          <div className="absolute top-20 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-navy-light/30 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/[0.03] rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/[0.03] rounded-full" />
+      <section ref={heroRef} className="relative min-h-[92vh] lg:min-h-screen flex items-center overflow-hidden bg-navy">
+        {/* Full-bleed real construction photography background */}
+        <motion.div style={{ y: heroY }} className="absolute inset-0">
+          <Image
+            src={IMAGES.heroes.homeMain}
+            alt="Industrial Construction"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+          {/* Heavy cinematic dark industrial overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy/85 to-navy/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy/40 to-transparent" />
         </motion.div>
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-32">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h50v50H0V0zm1 1h48v48H1V1z' fill='%23ffffff' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+
+        <motion.div
+          style={{ opacity: heroOpacity }}
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-36 lg:py-44"
+        >
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10
-                         px-4 py-2 rounded-full text-sm text-white/80 mb-8"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-navy/80 backdrop-blur-md border border-gold/40 text-xs sm:text-sm text-white mb-6 shadow-xl"
             >
-              <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-              Light Industrial Construction Excellence
+              <span className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
+              <span className="font-semibold text-gold-light tracking-wide uppercase">
+                Light Industrial Construction Contractor
+              </span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6"
+              className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6"
             >
               Building the Future of{' '}
-              <span className="text-gradient">Industrial</span>{' '}
-              America
+              <span className="text-gradient">Industrial America.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-lg md:text-xl text-white/60 max-w-xl mb-10 leading-relaxed"
+              className="text-lg sm:text-xl text-white/85 max-w-2xl mb-10 leading-relaxed font-light"
             >
-              Business Venture Group Inc. delivers comprehensive light industrial
-              construction solutions with unmatched safety, quality, and efficiency.
+              Business Venture Group Inc. brings together specialized companies to deliver
+              turnkey general contracting, design-build, and mechanical solutions with unmatched
+              safety and precision.
             </motion.p>
 
             <motion.div
@@ -175,199 +244,279 @@ export default function HomePage() {
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light
-                           text-navy font-bold px-8 py-4 rounded-lg transition-all duration-300
-                           hover:shadow-lg hover:shadow-gold/25 text-base"
+                className="group inline-flex items-center justify-center gap-2.5 bg-gold hover:bg-gold-light
+                           text-navy font-extrabold px-8 py-4 rounded-xl transition-all duration-300
+                           hover:shadow-xl hover:shadow-gold/25 text-base"
               >
                 Start Your Project
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
                 href="/companies"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40
-                           text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300
-                           hover:bg-white/5 text-base"
+                className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white
+                           text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300
+                           hover:bg-white/10 text-base backdrop-blur-sm"
               >
-                Our Companies
+                Explore Our Companies
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </div>
 
-          {/* Stats Bar */}
+          {/* Stats Bar with Depth */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-10"
+            className="mt-16 lg:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t border-white/15"
           >
             {stats.map((stat) => (
-              <div key={stat.label}>
-                <div className="text-3xl md:text-4xl font-bold text-gold mb-1">
+              <div key={stat.label} className="bg-navy-dark/40 backdrop-blur-md p-4 rounded-xl border border-white/5">
+                <div className="text-3xl sm:text-4xl font-black text-gold-light mb-1">
                   {stat.number}
                 </div>
-                <div className="text-white/50 text-sm">{stat.label}</div>
+                <div className="text-white/70 text-xs sm:text-sm font-medium">{stat.label}</div>
               </div>
             ))}
           </motion.div>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center pt-2"
-          >
-            <div className="w-1.5 h-1.5 bg-gold rounded-full" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* ===== ABOUT SECTION ===== */}
-      <section className="section-padding bg-white">
+      {/* ===== ABOUT SECTION WITH REAL PHOTOGRAPHY ===== */}
+      <section className="section-padding bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <FadeIn direction="right">
-              <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-navy via-navy-light to-steel relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Building2 className="w-32 h-32 text-white/10" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Visual Photography Block */}
+            <div className="lg:col-span-6">
+              <FadeIn direction="right">
+                <div className="relative">
+                  {/* Primary Large Image */}
+                  <div className="relative h-[380px] sm:h-[460px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                    <Image
+                      src={IMAGES.about.siteDiscussion}
+                      alt="Construction team discussing project specifications"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy to-transparent h-1/3" />
-                </div>
-                {/* Floating stat card */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-2xl p-6 border border-gray-100">
-                  <div className="text-4xl font-bold text-navy mb-1">25+</div>
-                  <div className="text-muted text-sm">Years of Excellence</div>
-                </div>
-              </div>
-            </FadeIn>
 
-            <FadeIn direction="left" delay={0.2}>
-              <div>
-                <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+                  {/* Overlapping Secondary Card with Photo */}
+                  <div className="hidden sm:block absolute -bottom-8 -right-6 w-64 bg-white p-3 rounded-2xl shadow-2xl border border-gray-100">
+                    <div className="relative h-32 rounded-xl overflow-hidden mb-3">
+                      <Image
+                        src={IMAGES.about.modernLogistics}
+                        alt="Completed modern logistics facility"
+                        fill
+                        sizes="256px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="px-2 pb-1">
+                      <div className="text-xs font-bold uppercase tracking-wider text-gold">Proven Scale</div>
+                      <div className="text-sm font-bold text-navy">650k+ Sq Ft Facilities Built</div>
+                    </div>
+                  </div>
+
+                  {/* Floating Experience Badge */}
+                  <div className="absolute -top-6 -left-6 bg-navy text-white p-5 rounded-2xl shadow-2xl border border-white/10">
+                    <div className="text-3xl font-extrabold text-gold">25+</div>
+                    <div className="text-xs text-white/75 font-medium uppercase tracking-wider">Years of Trust</div>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Content Side */}
+            <div className="lg:col-span-6">
+              <FadeIn direction="left" delay={0.15}>
+                <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
                   <div className="w-8 h-px bg-gold" />
-                  About Us
+                  About Business Venture Group
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-6 leading-tight">
                   Your One-Stop Solution for{' '}
-                  <span className="text-gold">Industrial Construction</span>
+                  <span className="text-gold">Light Industrial</span> Excellence
                 </h2>
-                <p className="text-muted leading-relaxed mb-6">
-                  Business Venture Group Inc. brings together a family of specialized construction
-                  companies, each focused on delivering excellence in their respective disciplines.
-                  Together, we provide comprehensive light industrial construction solutions that
-                  bring complex projects to completion on time and under budget.
+                <p className="text-muted text-base sm:text-lg leading-relaxed mb-6">
+                  Modeled on the proven multi-craft corporate umbrella structure, Business Venture Group
+                  Inc. unites specialized industrial operating companies under a single standard of
+                  safety, quality, and fiscal discipline.
                 </p>
-                <p className="text-muted leading-relaxed mb-8">
-                  From general contracting and design-build to specialized mechanical services
-                  and custom fabrication, our integrated approach ensures seamless project delivery
-                  with the highest standards of safety and quality.
+                <p className="text-muted text-base leading-relaxed mb-8">
+                  From site development and structural steel fabrication to process mechanical loops and
+                  turnkey plant maintenance, our unified approach eliminates the contractor friction and
+                  schedule delays common to fragmented procurement models.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  {['Safety First Culture', 'On-Time Delivery', 'Cost-Effective Solutions', 'Expert Team'].map(
-                    (item) => (
-                      <div key={item} className="flex items-center gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-gold shrink-0" />
-                        <span className="text-dark font-medium text-sm">{item}</span>
-                      </div>
-                    )
-                  )}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
+                  {[
+                    'Target Zero Safety Framework',
+                    'On-Time & On-Budget Delivery',
+                    'Single-Source Master Contracts',
+                    '1,200+ Certified Craft Personnel',
+                    'ASME & AWS Certified Shops',
+                    'National Equipment & Rigging Fleet',
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-5 h-5 text-gold shrink-0" />
+                      <span className="text-dark font-medium text-sm">{item}</span>
+                    </div>
+                  ))}
                 </div>
 
-                <Link
-                  href="/leadership"
-                  className="group inline-flex items-center gap-2 text-navy font-semibold hover:text-gold transition-colors"
-                >
-                  Meet Our Leadership
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              </div>
-            </FadeIn>
+                <div className="flex items-center gap-4">
+                  <Link
+                    href="/leadership"
+                    className="inline-flex items-center gap-2 bg-navy hover:bg-navy-light text-white font-bold px-6 py-3.5 rounded-xl text-sm transition-all"
+                  >
+                    Meet Executive Leadership
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/companies"
+                    className="inline-flex items-center gap-2 text-navy hover:text-gold font-bold text-sm transition-colors"
+                  >
+                    View Group Companies
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== SERVICES SECTION ===== */}
-      <section className="section-padding bg-light">
+      {/* ===== SERVICES WITH REAL PHOTOGRAPHY CARDS ===== */}
+      <section className="section-padding bg-light relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="text-center max-w-2xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
-              <div className="w-8 h-px bg-gold" />
-              What We Do
-              <div className="w-8 h-px bg-gold" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Comprehensive Construction Services
-            </h2>
-            <p className="text-muted text-lg">
-              From concept to completion, we deliver tailored solutions for every phase
-              of your industrial construction project.
-            </p>
-          </FadeIn>
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <FadeIn>
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
+                <div className="w-8 h-px bg-gold" />
+                Turnkey Capabilities
+                <div className="w-8 h-px bg-gold" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy mb-4">
+                Comprehensive Industrial Services
+              </h2>
+              <p className="text-muted text-base sm:text-lg">
+                Delivering complete lifecycle solutions from site preparation through long-term facility maintenance.
+              </p>
+            </FadeIn>
+          </div>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <StaggerItem key={service.title}>
-                <div className="card-hover bg-white rounded-xl p-8 h-full border border-gray-100 group cursor-pointer">
-                  <div className="w-14 h-14 rounded-xl bg-navy/5 group-hover:bg-gold/10 flex items-center justify-center mb-6 transition-colors duration-300">
-                    <service.icon className="w-7 h-7 text-navy group-hover:text-gold transition-colors duration-300" />
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <StaggerItem key={service.title}>
+                  <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col justify-between h-full group">
+                    <div>
+                      {/* Image header with overlay */}
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-navy/30 to-transparent" />
+                        <div className="absolute top-4 left-4 w-11 h-11 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-navy shadow-md">
+                          <Icon className="w-5 h-5 text-navy" />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-navy group-hover:text-gold transition-colors mb-3">
+                          {service.title}
+                        </h3>
+                        <p className="text-muted text-sm leading-relaxed mb-4">
+                          {service.description}
+                        </p>
+
+                        <div className="space-y-2 pt-2 border-t border-gray-100">
+                          {service.highlights.map((hl) => (
+                            <div key={hl} className="flex items-center gap-2 text-xs text-dark/80 font-medium">
+                              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                              {hl}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="px-6 pb-6 pt-2">
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-navy group-hover:text-gold uppercase tracking-wider transition-colors"
+                      >
+                        Request Project Scope <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-gold transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted leading-relaxed">{service.description}</p>
-                </div>
-              </StaggerItem>
-            ))}
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </div>
       </section>
 
-      {/* ===== COMPANIES SECTION ===== */}
+      {/* ===== SUBSIDIARY NETWORK SHOWCASE ===== */}
       <section className="section-padding bg-navy text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        {/* Background glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <FadeIn className="max-w-2xl mb-16">
-            <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
-              <div className="w-8 h-px bg-gold" />
-              Our Family of Companies
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              A Network of{' '}
-              <span className="text-gradient">Specialized Experts</span>
-            </h2>
-            <p className="text-white/60 text-lg">
-              Each company within the Business Venture Group brings unique capabilities and
-              deep expertise to deliver exceptional results.
-            </p>
-          </FadeIn>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mb-16">
+            <FadeIn>
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-4">
+                <div className="w-8 h-px bg-gold" />
+                The Family of Companies
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                Specialized Divisions.{' '}
+                <span className="text-gradient">Unified Power.</span>
+              </h2>
+              <p className="text-white/70 text-base sm:text-lg">
+                Like Bartlett Group&apos;s proven multi-entity architecture, each company operates with deep craft expertise while leveraging group scale.
+              </p>
+            </FadeIn>
+          </div>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {companies.map((company) => (
               <StaggerItem key={company.name}>
-                <Link href="/companies" className="group block">
-                  <div className="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8
-                                  hover:bg-white/10 hover:border-gold/30 transition-all duration-300">
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${company.color} flex items-center
-                                    justify-center mb-5`}>
-                      <Building2 className="w-6 h-6 text-white" />
+                <Link href={company.href} className="group block h-full">
+                  <div className="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all duration-500 card-hover flex flex-col sm:flex-row h-full">
+                    <div className="relative sm:w-2/5 h-56 sm:h-auto shrink-0 overflow-hidden">
+                      <Image
+                        src={company.image}
+                        alt={company.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 40vw"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-navy/30 group-hover:bg-transparent transition-colors" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-gold transition-colors">
-                      {company.name}
-                    </h3>
-                    <p className="text-white/50">{company.description}</p>
-                    <div className="mt-4 inline-flex items-center gap-1 text-gold text-sm font-semibold
-                                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Learn More <ArrowUpRight className="w-3.5 h-3.5" />
+                    <div className="p-6 sm:p-8 flex flex-col justify-between sm:w-3/5">
+                      <div>
+                        <span className="text-xs font-bold text-gold uppercase tracking-wider block mb-2">
+                          {company.division}
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-gold transition-colors mb-3">
+                          {company.name}
+                        </h3>
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">
+                          {company.description}
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 text-gold text-xs font-bold uppercase tracking-wider pt-4 border-t border-white/10">
+                        Explore Division <ArrowUpRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -375,131 +524,133 @@ export default function HomePage() {
             ))}
           </StaggerContainer>
 
-          <FadeIn delay={0.4} className="mt-12 text-center">
+          <FadeIn delay={0.3} className="mt-12 text-center">
             <Link
               href="/companies"
-              className="inline-flex items-center gap-2 border border-white/20 hover:border-gold
-                         text-white hover:text-gold font-semibold px-8 py-3 rounded-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 border border-white/20 hover:border-gold text-white hover:text-gold font-bold px-8 py-3.5 rounded-xl transition-all"
             >
-              View All Companies
+              View All 6 Operating Companies
               <ChevronRight className="w-4 h-4" />
             </Link>
           </FadeIn>
         </div>
       </section>
 
-      {/* ===== WHY CHOOSE US SECTION ===== */}
+      {/* ===== FEATURED PROJECTS SHOWCASE ===== */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <FadeIn>
-              <div>
-                <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
-                  <div className="w-8 h-px bg-gold" />
-                  Why Choose Us
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
-                  Delivering Results That{' '}
-                  <span className="text-gold">Exceed Expectations</span>
-                </h2>
-                <p className="text-muted leading-relaxed mb-10">
-                  We combine decades of experience with innovative solutions to deliver
-                  projects that stand the test of time.
-                </p>
-
-                <div className="space-y-8">
-                  {[
-                    {
-                      icon: Shield,
-                      title: 'Industry-Leading Safety',
-                      description:
-                        'Our comprehensive safety programs have achieved over 2 million work hours without a lost-time incident.',
-                    },
-                    {
-                      icon: TrendingUp,
-                      title: 'Proven Track Record',
-                      description:
-                        'Over 500 successfully completed projects across multiple industrial sectors nationwide.',
-                    },
-                    {
-                      icon: Users,
-                      title: 'Expert Workforce',
-                      description:
-                        'A team of 1,200+ skilled professionals with specialized training and certifications.',
-                    },
-                  ].map((item, idx) => (
-                    <FadeIn key={item.title} delay={idx * 0.15}>
-                      <div className="flex gap-5">
-                        <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
-                          <item.icon className="w-6 h-6 text-gold" />
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-navy mb-1">{item.title}</h3>
-                          <p className="text-muted leading-relaxed">{item.description}</p>
-                        </div>
-                      </div>
-                    </FadeIn>
-                  ))}
-                </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-3">
+                <div className="w-8 h-px bg-gold" />
+                Featured Portfolio
               </div>
-            </FadeIn>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+                Recent Construction Projects
+              </h2>
+            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-navy hover:text-gold font-bold text-sm transition-colors"
+            >
+              Discuss Your Facility Plans
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
 
-            <FadeIn direction="left" delay={0.3}>
-              <div className="relative">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gold/20 via-navy to-navy-light relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <HardHat className="w-40 h-40 text-white/10" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredProjects.map((p) => (
+              <FadeIn key={p.title}>
+                <div className="group rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover bg-white flex flex-col h-full">
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
+                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-navy/90 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider">
+                      {p.tag}
+                    </span>
+                    <span className="absolute bottom-4 left-4 text-xs font-semibold text-white/90">
+                      {p.location}
+                    </span>
+                  </div>
+                  <div className="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                      <h3 className="text-xl font-bold text-navy group-hover:text-gold transition-colors mb-2">
+                        {p.title}
+                      </h3>
+                      <p className="text-muted text-sm leading-relaxed">{p.scope}</p>
+                    </div>
                   </div>
                 </div>
-                {/* Accent blocks */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold/20 rounded-xl" />
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gold/10 rounded-xl" />
-              </div>
-            </FadeIn>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ===== NEWS SECTION ===== */}
+      {/* ===== LATEST NEWS & INSIGHTS ===== */}
       <section className="section-padding bg-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 text-gold font-bold text-xs uppercase tracking-wider mb-3">
                 <div className="w-8 h-px bg-gold" />
-                Latest News
+                Latest News & Releases
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy">
-                Stay Updated
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+                Corporate Insights & Field Milestones
               </h2>
             </div>
             <Link
               href="/news"
-              className="group inline-flex items-center gap-2 text-navy font-semibold hover:text-gold transition-colors"
+              className="inline-flex items-center gap-2 text-navy hover:text-gold font-bold text-sm transition-colors"
             >
-              View All News
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              View All Press Releases
+              <ArrowUpRight className="w-4 h-4" />
             </Link>
-          </FadeIn>
+          </div>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {newsItems.map((item) => (
               <StaggerItem key={item.title}>
                 <Link href="/news" className="group block h-full">
-                  <div className="card-hover bg-white rounded-xl overflow-hidden h-full border border-gray-100">
-                    <div className="h-48 bg-gradient-to-br from-navy to-navy-light relative">
-                      <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                        <Building2 className="w-20 h-20 text-white" />
+                  <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover h-full flex flex-col justify-between">
+                    <div>
+                      <div className="relative h-52 overflow-hidden">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                        <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-navy/90 text-white text-xs font-bold uppercase tracking-wider">
+                          {item.category}
+                        </span>
+                      </div>
+
+                      <div className="p-6">
+                        <div className="text-gold text-xs font-bold uppercase tracking-wider mb-2">
+                          {item.date}
+                        </div>
+                        <h3 className="text-lg font-bold text-navy group-hover:text-gold transition-colors mb-3 line-clamp-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-muted text-sm leading-relaxed line-clamp-3">
+                          {item.excerpt}
+                        </p>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <div className="text-gold text-sm font-medium mb-2">{item.date}</div>
-                      <h3 className="text-lg font-bold text-navy mb-3 group-hover:text-gold transition-colors line-clamp-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-muted text-sm leading-relaxed line-clamp-3">
-                        {item.excerpt}
-                      </p>
+
+                    <div className="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-navy group-hover:text-gold uppercase tracking-wider">
+                      Read Full Story
+                      <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
                 </Link>
@@ -509,42 +660,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== CTA SECTION ===== */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 hero-gradient" />
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+      {/* ===== DRAMATIC REAL PHOTO CTA SECTION ===== */}
+      <section className="relative py-28 lg:py-36 overflow-hidden bg-navy">
+        <div className="absolute inset-0">
+          <Image
+            src={IMAGES.heroes.careers}
+            alt="Industrial welders at work"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy/90 to-navy-dark/90" />
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
           <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              Let&apos;s Build Something{' '}
-              <span className="text-gradient">Extraordinary</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 border border-gold/40 text-gold-light text-xs font-bold uppercase tracking-widest mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              Start Your Next Industrial Project
+            </div>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+              Ready to Build With{' '}
+              <span className="text-gradient">Precision & Power?</span>
             </h2>
-            <p className="text-white/60 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-              Ready to start your next industrial construction project? Contact our team
-              today to discover how Business Venture Group can bring your vision to life.
+            <p className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+              Connect with our estimating and engineering directors to review your scope,
+              discuss fast-track timelines, or mobilize our multi-craft crews.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-light
-                           text-navy font-bold px-10 py-4 rounded-lg transition-all duration-300
-                           hover:shadow-lg hover:shadow-gold/25 text-lg"
+                           text-navy font-extrabold px-9 py-4 rounded-xl transition-all duration-300
+                           hover:shadow-2xl hover:shadow-gold/30 text-base"
               >
-                Contact Us Today
+                Request a Consultation
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
               <Link
                 href="/careers"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40
-                           text-white font-semibold px-10 py-4 rounded-lg transition-all duration-300
-                           hover:bg-white/5 text-lg"
+                className="inline-flex items-center justify-center gap-2 border border-white/30 hover:border-white
+                           text-white font-semibold px-9 py-4 rounded-xl transition-all duration-300
+                           hover:bg-white/10 text-base backdrop-blur-sm"
               >
-                Join Our Team
+                Join Our Craft Team
               </Link>
             </div>
           </FadeIn>
