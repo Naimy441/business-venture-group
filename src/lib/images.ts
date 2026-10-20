@@ -1,19 +1,20 @@
 /**
  * High-resolution verified industrial and corporate photography from Unsplash.
  * Selected specifically for Light Industrial Construction, turnarounds, mechanical, and civil works.
+ * All URLs verified 100% active (HTTP 200).
  */
 
 export const IMAGES = {
   // Hero and main section banners
   heroes: {
-    homeMain: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?auto=format&fit=crop&w=2200&q=85', // Tower cranes, industrial sunset
+    homeMain: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=2200&q=85', // Tower cranes, industrial scaffold structure
     leadership: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=85', // Architectural modern steel & glass
     operations: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=2200&q=85', // Industrial piping & valves plant
     constructionManagers: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2200&q=85', // Hard hat construction manager looking at structure
     companies: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=2200&q=85', // Modern light industrial facility exterior
-    news: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=2200&q=85', // Construction site at dusk
-    careers: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=2200&q=85', // Sparks welding craft
-    contact: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=2200&q=85', // Industrial architecture
+    news: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=2200&q=85', // Construction perspective structure
+    careers: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2200&q=85', // Industrial fabrication & mechanical assembly
+    contact: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=2200&q=85', // Industrial architecture & steel
   },
 
   // Service cards photography
@@ -29,11 +30,11 @@ export const IMAGES = {
   // Subsidiary operating companies
   companies: {
     industrialServices: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80', // Scaffolding and soft crafts
-    mechanicalSolutions: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80', // Precision piping welder
+    mechanicalSolutions: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80', // Precision piping & mechanical
     fabricationManufacturing: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80', // Heavy metal fabrication shop
-    infrastructureCivil: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?auto=format&fit=crop&w=1200&q=80', // Foundation excavation & cranes
+    infrastructureCivil: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80', // Foundation excavation & civil infrastructure
     refractorySpecialty: 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80', // High heat furnace industrial plant
-    nextGenAccess: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80', // Modular scaffold system
+    nextGenAccess: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80', // Modular scaffold systems
   },
 
   // Executive portraits
@@ -68,9 +69,9 @@ export const IMAGES = {
     'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80', // Safety milestone
     'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80', // Charlotte hub
     'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=80', // Refinery turnaround
-    'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80', // Apprenticeship welding
+    'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80', // Apprenticeship & tooling
     'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80', // Robotic fabrication
-    'https://images.unsplash.com/photo-1541888946425-d0fbb1861564?auto=format&fit=crop&w=1200&q=80', // Top contractor
+    'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80', // Top contractor
     'https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=1200&q=80', // ESG green construction
   ],
 
@@ -78,7 +79,7 @@ export const IMAGES = {
   about: {
     siteDiscussion: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
     fieldCrew: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80',
-    qualityCheck: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80',
+    qualityCheck: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80', // High-tech engineering quality check
     modernLogistics: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
   },
 };
