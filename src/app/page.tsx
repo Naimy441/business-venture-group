@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowUpRight, ArrowRight, Plus } from "lucide-react";
 import { services, industries, articles } from "@/lib/content";
 import { ProjectCTA } from "@/components/Footer";
+import { TextEffect } from "@/components/TextEffect";
 export default function Home() {
   return (
     <>
@@ -19,12 +20,19 @@ export default function Home() {
         <div className="wrap hero-inner">
           <span className="eyebrow hero-eyebrow">
             <span />
-            Industrial construction & services
+            <TextEffect per="char" preset="fade">
+              Industrial construction & services
+            </TextEffect>
           </span>
           <h1>
-            Industrial work.
+            <TextEffect delay={0.2}>Industrial work.</TextEffect>
             <br />
-            Built on <em>trust.</em>
+            <TextEffect delay={0.45}>Built on</TextEffect>{" "}
+            <em>
+              <TextEffect delay={0.65} preset="scale">
+                trust.
+              </TextEffect>
+            </em>
           </h1>
           <div className="hero-bottom">
             <div>
@@ -40,7 +48,7 @@ export default function Home() {
             <a
               href="#the-group"
               className="hero-scroll"
-              aria-label="Discover Business Venture Group"
+              aria-label="Discover Global Industries"
             >
               <ArrowDown size={22} />
               <span>Built for what’s next</span>
@@ -48,7 +56,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-index" aria-hidden="true">
-          BVG / 01
+          GI / 01
         </div>
       </section>
       <div className="discipline-strip">
@@ -65,10 +73,17 @@ export default function Home() {
           <div className="intro-heading">
             <span className="eyebrow orange">01 / The group</span>
             <h2>
-              More than a contractor.
-              <br />A team that sees
+              <TextEffect inView>More than a contractor.</TextEffect>
               <br />
-              <span className="muted">the whole job.</span>
+              <TextEffect inView delay={0.3}>
+                A team that sees
+              </TextEffect>
+              <br />
+              <span className="muted">
+                <TextEffect inView delay={0.6}>
+                  the whole job.
+                </TextEffect>
+              </span>
             </h2>
           </div>
           <div className="intro-body">
@@ -78,7 +93,7 @@ export default function Home() {
                 the people building them.
               </p>
               <p>
-                Business Venture Group brings construction, mechanical work,
+                Global Industries brings construction, mechanical work,
                 fabrication, and facility support into one coordinated
                 conversation. We connect the early decisions with the realities
                 of the field, so each trade understands the work ahead.
@@ -121,9 +136,13 @@ export default function Home() {
             <div>
               <span className="eyebrow">02 / Our capabilities</span>
               <h2>
-                The work connects.
+                <TextEffect inView>The work connects.</TextEffect>
                 <br />
-                <span>So do we.</span>
+                <span>
+                  <TextEffect inView delay={0.3}>
+                    So do we.
+                  </TextEffect>
+                </span>
               </h2>
             </div>
             <div>
@@ -169,9 +188,11 @@ export default function Home() {
             <div>
               <span className="eyebrow orange">03 / Where we work</span>
               <h2>
-                Built around
+                <TextEffect inView>Built around</TextEffect>
                 <br />
-                your operation.
+                <TextEffect inView delay={0.2}>
+                  your operation.
+                </TextEffect>
               </h2>
             </div>
             <div>
@@ -221,13 +242,19 @@ export default function Home() {
         <div className="safety-content">
           <span className="eyebrow">The way we work</span>
           <h2>
-            Take care of
+            <TextEffect inView>Take care of</TextEffect>
             <br />
-            the people.
+            <TextEffect inView delay={0.15}>
+              the people.
+            </TextEffect>
             <br />
-            Take pride in
+            <TextEffect inView delay={0.3}>
+              Take pride in
+            </TextEffect>
             <br />
-            the work.
+            <TextEffect inView delay={0.45}>
+              the work.
+            </TextEffect>
           </h2>
           <p>
             Safety and quality belong in every decision—how a job is planned,
@@ -243,7 +270,9 @@ export default function Home() {
           <div className="section-top">
             <div>
               <span className="eyebrow orange">04 / Field notes</span>
-              <h2>A practical perspective.</h2>
+              <h2>
+                <TextEffect inView>A practical perspective.</TextEffect>
+              </h2>
             </div>
             <Link className="text-link" href="/news">
               All field notes <ArrowUpRight size={18} />
@@ -275,7 +304,9 @@ export default function Home() {
       <section className="careers-band">
         <div className="wrap">
           <span className="eyebrow">Build with us</span>
-          <h2>Good work takes good people.</h2>
+          <h2>
+            <TextEffect inView>Good work takes good people.</TextEffect>
+          </h2>
           <Link href="/careers" className="button button-outline-light">
             Explore careers <ArrowUpRight size={18} />
           </Link>

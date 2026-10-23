@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Brand from "./Brand";
+import { TextEffect } from "./TextEffect";
 export function ProjectCTA() {
   return (
     <section className="project-cta">
@@ -8,8 +9,11 @@ export function ProjectCTA() {
         <div>
           <span className="eyebrow">The next step</span>
           <h2>
-            Good work starts with
-            <br />a real conversation.
+            <TextEffect inView>Good work starts with</TextEffect>
+            <br />
+            <TextEffect inView delay={0.3}>
+              a real conversation.
+            </TextEffect>
           </h2>
         </div>
         <div>
@@ -31,7 +35,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="footer-main">
           <div className="footer-brand">
-            <Link href="/" aria-label="Business Venture Group home">
+            <Link href="/" aria-label="Global Industries home">
               <Brand light />
             </Link>
             <p>
@@ -62,7 +66,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Business Venture Group Inc.</span>
+          <span>© {new Date().getFullYear()} Global Industries</span>
           <span>Industrial construction & services</span>
           <Link href="/privacy">Privacy</Link>
         </div>

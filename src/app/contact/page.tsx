@@ -1,10 +1,12 @@
 import { ArrowDownRight } from "lucide-react";
 import { services } from "@/lib/content";
 import InquiryForm from "@/components/InquiryForm";
+import { TextEffect } from "@/components/TextEffect";
+import { site } from "@/lib/site";
 export const metadata = {
   title: "Contact",
   description:
-    "Start a project conversation with Business Venture Group. Share your scope, facility requirements, and target timing.",
+    "Start a project conversation with Global Industries. Share your scope, facility requirements, and target timing.",
 };
 export default async function Contact({
   searchParams,
@@ -18,11 +20,13 @@ export default async function Contact({
         <div className="contact-intro">
           <span className="eyebrow orange">Let’s talk</span>
           <h1>
-            What are
+            <TextEffect>What are</TextEffect>
             <br />
-            you building
+            <TextEffect delay={0.2}>you building</TextEffect>
             <br />
-            <em>next?</em>
+            <em>
+              <TextEffect delay={0.4}>next?</TextEffect>
+            </em>
           </h1>
           <p className="lead">
             A new facility. An upgrade. A better plan for the next shutdown.
@@ -37,14 +41,9 @@ export default async function Contact({
               you have in mind. If your scope is still taking shape, that’s a
               good time to start.
             </p>
-            {process.env.NEXT_PUBLIC_CONTACT_EMAIL && (
-              <a
-                className="text-link"
-                href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
-              >
-                {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
-              </a>
-            )}
+            <a className="text-link" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
           </div>
         </div>
         <InquiryForm

@@ -365,7 +365,7 @@ em {
   margin-bottom: 29px;
   color: #e6e7dd;
 }
-.hero-eyebrow > span {
+.hero-eyebrow > span:first-child {
   height: 6px;
   width: 6px;
   background: var(--bright);
@@ -2788,41 +2788,36 @@ em {
   }
 }
 
-/* Supplied BVG identity: original gold monogram with a compact wordmark. */
-.brand { gap: 16px; }
-.brand .brand-mark { width: 94px; height: auto; flex-shrink: 0; object-fit: contain; }
-.brand > span { font-size: 8px; font-weight: 600; letter-spacing: .12em; }
-.brand > span > span { font-size: 20px; font-weight: 600; letter-spacing: .19em; margin-top: 3px; }
-.brand .brand-inc { font-size: 7px; letter-spacing: .04em; }
-.footer-main .brand .brand-mark { width: 104px; }
+/* Global Industries identity: gold globe cut from the supplied logo, with a live wordmark. */
+.brand { gap: 12px; }
+.brand .brand-mark { width: 46px; height: auto; flex-shrink: 0; object-fit: contain; }
+.brand > span { font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: .06em; line-height: 1; }
+.brand > span > span { font-family: var(--font-body); font-size: 7.5px; font-weight: 600; letter-spacing: .58em; margin-top: 5px; margin-right: -.58em; }
+.footer-main .brand .brand-mark { width: 58px; }
+.footer-main .brand > span { font-size: 28px; }
+.footer-main .brand > span > span { font-size: 8.5px; }
 @media(max-width:1100px){
-  .brand { gap: 12px; }
-  .brand .brand-mark { width: 82px; }
-  .brand > span { font-size: 7px; }
-  .brand > span > span { font-size: 18px; }
-}
-@media(max-width:800px){
-  .brand { gap: 10px; }
-  .brand .brand-mark { width: 72px; }
-  .brand > span { font-size: 6.5px; }
-  .brand > span > span { font-size: 16px; }
-  .brand .brand-inc { font-size: 6px; }
-  .footer-main .brand > span { font-size: 8px; }
-  .footer-main .brand > span > span { font-size: 20px; }
+  .brand .brand-mark { width: 42px; }
+  .brand > span { font-size: 22px; }
+  .brand > span > span { font-size: 7px; }
 }
 @media(max-width:650px){
-  .brand .brand-mark { width: 66px; }
-  .brand > span { font-size: 6px; }
-  .brand > span > span { font-size: 15px; }
-  .brand .brand-inc { font-size: 5px; }
-  .footer-main .brand .brand-mark { width: 100px; }
+  .brand { gap: 10px; }
+  .brand .brand-mark { width: 38px; }
+  .brand > span { font-size: 20px; }
+  .brand > span > span { font-size: 6.4px; }
 }
 @media(max-width:370px){
   .brand { gap: 8px; }
-  .brand .brand-mark { width: 58px; }
-  .brand > span { font-size: 5.5px; }
-  .brand > span > span { font-size: 14px; }
+  .brand .brand-mark { width: 34px; }
+  .brand > span { font-size: 18px; }
+  .brand > span > span { font-size: 5.8px; }
 }
+
+/* Utilities used by TextEffect. */
+.inline-block { display: inline-block; }
+.whitespace-pre { white-space: pre; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* Give the introduction two purposeful columns, without an empty decorative rail. */
 .intro-copy { display: grid; grid-template-columns: 1.12fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }

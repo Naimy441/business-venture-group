@@ -32,7 +32,7 @@ export default async function Article({
             <ArrowLeft size={16} />
             All field notes
           </Link>
-          <span className="eyebrow orange">{a.category} / BVG perspective</span>
+          <span className="eyebrow orange">{a.category} / Field perspective</span>
           <h1>{a.title}</h1>
           <p className="lead">{a.excerpt}</p>
         </header>
@@ -55,7 +55,7 @@ export default async function Article({
             </section>
           ))}
           <div className="article-signoff">
-            <span className="eyebrow orange">Business Venture Group</span>
+            <span className="eyebrow orange">Global Industries</span>
             <p>Construction. Craft. Accountability.</p>
           </div>
         </div>

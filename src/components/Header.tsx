@@ -30,7 +30,7 @@ export default function Header() {
         <div className="header-inner">
           <Link
             href="/"
-            aria-label="Business Venture Group home"
+            aria-label="Global Industries home"
             onClick={() => setOpen(false)}
           >
             <Brand />

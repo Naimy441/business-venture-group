@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 export const metadata = {
   title: "Careers",
   description:
-    "Connect with Business Venture Group about your experience in construction, skilled trades, project coordination, or field support.",
+    "Connect with Global Industries about your experience in construction, skilled trades, project coordination, or field support.",
 };
 export default function Careers() {
   return (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TextEffect } from "./TextEffect";
 export default function PageHero({
   eyebrow,
   title,
@@ -21,8 +22,14 @@ export default function PageHero({
         </div>
         <div className="page-hero-grid">
           <div>
-            <span className="eyebrow orange">{eyebrow}</span>
-            <h1>{title}</h1>
+            <span className="eyebrow orange">
+              <TextEffect per="char" preset="fade">
+                {eyebrow}
+              </TextEffect>
+            </span>
+            <h1>
+              <TextEffect delay={0.15}>{title}</TextEffect>
+            </h1>
           </div>
           <p>{description}</p>
         </div>

@@ -1,4 +1,6 @@
-# Business Venture Group
+# Global Industries
+
+https://globalindustries.cc · contact@globalindustries.cc
 
 A complete responsive website for industrial construction and services, built with Next.js and TypeScript. All photography and fonts are served locally.
 
@@ -23,7 +25,7 @@ Home, capabilities, industries, the group, our approach, operations management, 
 
 ## Inquiry handling
 
-The previous forms simulated successful delivery. The rebuilt form validates details, offers an editable review, and can copy or download a brief. It does not store personal information or claim to submit it. To enable a prefilled email handoff, copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_CONTACT_EMAIL` to the verified company mailbox, then rebuild. Set `NEXT_PUBLIC_SITE_URL` to the public website origin when deploying to generate correct social sharing URLs. The user sends through their own email app.
+The previous forms simulated successful delivery. The rebuilt form validates details, offers an editable review, and can copy or download a brief. It does not store personal information or claim to submit it. The email handoff goes to contact@globalindustries.cc and the canonical origin is https://globalindustries.cc (both set in `src/lib/site.ts`; override with `NEXT_PUBLIC_CONTACT_EMAIL` / `NEXT_PUBLIC_SITE_URL`). The user sends through their own email app.
 
 ## Content integrity
 
@@ -31,6 +33,6 @@ Removed unverified executives and stock portraits, financial and safety statisti
 
 ## Assets
 
-Fonts: Barlow Condensed and Manrope, distributed under the SIL Open Font License (see public/fonts). Photography: locally cached Unsplash images, used as illustrative industrial photography rather than images of claimed BVG projects. Image source records are in public/images/SOURCES.txt.
+Fonts: Barlow Condensed and Manrope, distributed under the SIL Open Font License (see public/fonts). Photography: locally cached Unsplash images, used as illustrative industrial photography rather than images of claimed Global Industries projects. Image source records are in public/images/SOURCES.txt.
 
 The site is prepared for local review. Publishing and connecting an inquiry delivery service require the relevant hosting and company account details.

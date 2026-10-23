@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Copy, Download, ArrowLeft } from "lucide-react";
 import { services } from "@/lib/content";
+import { site } from "@/lib/site";
 export default function InquiryForm({
   initialCareer = false,
   initialService = "Not sure yet",
@@ -29,8 +30,8 @@ export default function InquiryForm({
       reviewRef.current.scrollIntoView({ block: "start", behavior: "instant" });
     }
   }, [review]);
-  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
-  const brief = `${career ? "Career introduction" : "Project inquiry"} — Business Venture Group\n\nName: ${form.name}\nEmail: ${form.email}\n${career ? "Discipline" : "Company"}: ${form.company}\nPhone: ${form.phone || "Not provided"}\nLocation: ${form.location || "To be discussed"}\n${career ? "Interest" : "Scope"}: ${form.service}\n\n${form.message}`;
+  const email = site.email;
+  const brief = `${career ? "Career introduction" : "Project inquiry"} — Global Industries\n\nName: ${form.name}\nEmail: ${form.email}\n${career ? "Discipline" : "Company"}: ${form.company}\nPhone: ${form.phone || "Not provided"}\nLocation: ${form.location || "To be discussed"}\n${career ? "Interest" : "Scope"}: ${form.service}\n\n${form.message}`;
   const update = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -57,8 +58,8 @@ export default function InquiryForm({
     const a = document.createElement("a");
     a.href = url;
     a.download = career
-      ? "BVG-career-introduction.txt"
-      : "BVG-project-inquiry.txt";
+      ? "global-industries-career-introduction.txt"
+      : "global-industries-project-inquiry.txt";
     a.click();
     URL.revokeObjectURL(url);
     setSaved(true);
@@ -92,7 +93,7 @@ export default function InquiryForm({
           <p>
             {email
               ? "Review your details, then open your email app to send your inquiry."
-              : "Review your details, then save a copy to share with your Business Venture Group contact."}
+              : "Review your details, then save a copy to share with your Global Industries contact."}
           </p>
           <pre>{brief}</pre>
           <div className="review-actions">
@@ -245,7 +246,7 @@ export default function InquiryForm({
           <p className="form-note">
             {email
               ? "You’ll review your inquiry before sending it through your email app."
-              : "Prepare and download your brief to share with your BVG contact. This form does not send or store your information."}{" "}
+              : "Prepare and download your brief to share with your Global Industries contact. This form does not send or store your information."}{" "}
             <a href="/privacy">Privacy information</a>
           </p>
         </form>

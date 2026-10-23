@@ -36,7 +36,7 @@ export default function Privacy() {
         </p>
         <h2>Questions</h2>
         <p>
-          For a question about information shared with Business Venture Group,
+          For a question about information shared with Global Industries,
           contact the company representative with whom you are communicating.
         </p>
       </div>

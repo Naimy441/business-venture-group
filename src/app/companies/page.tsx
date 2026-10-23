@@ -10,13 +10,13 @@ export default function Companies() {
       <PageHero
         eyebrow="The group"
         title="Connected expertise. Shared responsibility."
-        description="Business Venture Group brings related construction and industrial disciplines together around the needs of a project. The value is in how the work connects."
+        description="Global Industries brings related construction and industrial disciplines together around the needs of a project. The value is in how the work connects."
         image="construction"
       />
       <section className="section">
         <div className="wrap">
           <div className="editorial-intro">
-            <span className="eyebrow orange">Business Venture Group Inc.</span>
+            <span className="eyebrow orange">Global Industries</span>
             <div>
               <h2>
                 A wider view.
